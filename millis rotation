@@ -1,0 +1,25 @@
+int rot = 0;
+int oldrot = 0;
+unsigned long prevms = 0;
+long interval = 500;
+
+
+void setup() {
+  // put your setup code here, to run once:
+    Serial.begin(9600);
+    
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+unsigned long currentms = millis();
+long x = random(0, 30);
+int y = (15 - x);
+
+  if (currentms - prevms >= interval) {
+    prevms = currentms;
+    rot = (oldrot + y);
+    Serial.println(rot);
+    oldrot = rot;
+}
+}
